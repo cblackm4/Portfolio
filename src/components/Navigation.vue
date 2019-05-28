@@ -2,7 +2,7 @@
   <span>
     <!-- Mobile Nav -->
     <v-navigation-drawer v-model="hamburger" app temporary>
-      <v-list class="pt-0">
+      <v-list>
         <v-divider></v-divider>
         <v-list-tile
           v-for="navlink in navlinks"
@@ -65,4 +65,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="sass">
+.v-toolbar__content
+    background-color: #707070
+    color: #D1D1D1
+.v-btn__content
+    color: #D1D1D1
+</style>
