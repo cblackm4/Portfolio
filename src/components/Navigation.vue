@@ -1,7 +1,7 @@
 <template>
   <span>
     <!-- Mobile Nav -->
-    <v-navigation-drawer v-model="hamburger" app temporary>
+    <v-navigation-drawer v-model="hamburger" app temporary right>
       <v-list>
         <v-divider></v-divider>
         <v-list-tile
@@ -18,7 +18,7 @@
     </v-navigation-drawer>
 
     <!-- Desktop Nav -->
-    <v-toolbar app flat>
+    <v-toolbar class="head-main" app flat>
       <v-avatar size="45">
         <img src="../../resources/avatar.jpg" alt="alt" />
       </v-avatar>
@@ -30,6 +30,7 @@
       <!-- Nav -->
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
+          class="head-links"
           flat
           v-for="navlink in navlinks"
           :key="navlink.title"
@@ -65,10 +66,10 @@ export default {
 };
 </script>
 
-<style lang="sass">
-.v-toolbar__content
+<style scoped lang="sass">
+.head-main
     background-color: #707070
     color: #D1D1D1
-.v-btn__content
+.head-links
     color: #D1D1D1
 </style>
