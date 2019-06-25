@@ -1,7 +1,7 @@
 <template>
   <span>
     <!-- Mobile Nav -->
-    <v-navigation-drawer v-model="hamburger" app temporary right>
+    <v-navigation-drawer v-model="hamburger" color="white" app temporary right>
       <v-list>
         <v-divider></v-divider>
         <v-list-tile
@@ -18,7 +18,7 @@
     </v-navigation-drawer>
 
     <!-- Desktop Nav -->
-    <v-toolbar class="head-main" app flat>
+    <v-toolbar class="head-main" fixed flat>
       <v-avatar size="45">
         <img src="../../resources/avatar.jpg" alt="alt" />
       </v-avatar>
@@ -56,10 +56,9 @@ export default {
       hamburger: false,
       navlinks: [
         { title: "Home", route: "/" },
-        { title: "Projects", route: "../projects" },
-        { title: "Services", route: "../services" },
         { title: "About", route: "../about" },
-        { title: "Contact", route: "../contact" }
+        { title: "Contact", route: "../contact" },
+        { title: "Services", route: "../services" }
       ]
     };
   }
@@ -71,5 +70,7 @@ export default {
     background-color: #707070
     color: #D1D1D1
 .head-links
+    color: #D1D1D1
+.v-btn .v-btn__content .v-icon
     color: #D1D1D1
 </style>

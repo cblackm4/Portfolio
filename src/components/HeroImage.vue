@@ -15,7 +15,11 @@
       <v-flex pb-5 xs12 align-self-end>
         <span class="subheading white--text">Learn more about me!</span>
         <br />
-        <v-btn fab class="circle">
+        <v-btn
+          onClick="document.getElementById('scrollTar').scrollIntoView({behavior: 'smooth'});"
+          fab
+          class="circle"
+        >
           <v-icon class="expand" large color="black">expand_more</v-icon>
         </v-btn>
       </v-flex>
@@ -31,7 +35,7 @@ export default {
 
 <style scoped lang="sass">
 .home-hero
-    background-image: url("../../resources/hero-image.jpg")
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.2)), url("../../resources/hero-image.jpg")
     height: 100vh
     background-attachment: fixed
     background-position: center

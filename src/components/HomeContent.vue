@@ -1,21 +1,22 @@
 <template>
-  <v-container grid-list-md text-xs-center fluid>
+  <v-container id="scrollTar" grid-list-md text-xs-center fluid>
     <!--Section 1-->
-    <v-layout pb-5 justify-center row wrap>
+    <v-layout pa-5 justify-center row wrap>
       <v-flex align-self-center xs12>
         <h4 class="display-1 section-header">What I'm About</h4>
       </v-flex>
       <v-flex xs12 md3>
-        <v-card flat>
+        <v-card flat md3>
           <v-card-title class="justify-center headline section-header"
-            >Design</v-card-title
+            >Development</v-card-title
           >
-          <v-icon size="75">web</v-icon>
+          <v-icon size="75">code</v-icon>
           <v-card-text class="text-xs-left">
-            I love being creative and designing new things - especially
-            websites! My approach is always to create the most professional and
-            clean UI/UX experience, so that the audience has no trouble getting
-            the information they need, when they need it.
+            I graduated with distinction from my Computer Science program. You
+            can bet I'm serious about development! Developing web applications
+            to make other's lives easier is the greatest technology we've ever
+            learned - and I want to use my skills in problem solving to create
+            new solutions to change the world!
           </v-card-text>
         </v-card>
       </v-flex>
@@ -34,26 +35,26 @@
         </v-card>
       </v-flex>
       <v-flex xs12 md3>
-        <v-card flat md3>
+        <v-card flat>
           <v-card-title class="justify-center headline section-header"
-            >Development</v-card-title
+            >Design</v-card-title
           >
-          <v-icon size="75">code</v-icon>
+          <v-icon size="75">web</v-icon>
           <v-card-text class="text-xs-left">
-            I graduated with distinction from my Computer Science program. You
-            can bet I'm serious about development! Developing web applications
-            to make other's lives easier is the greatest technology we've ever
-            learned - and I want to use my skills in problem solving to create
-            new solutions to change the world!
+            I love being creative and designing new things - especially
+            websites! My approach is always to create the most professional and
+            clean UI/UX experience, so that the audience has no trouble getting
+            the information they need, when they need it.
           </v-card-text>
         </v-card>
       </v-flex>
     </v-layout>
     <!--Section 2-->
-    <v-layout wrap>
+    <v-layout pa-5 justify-center row wrap>
       <v-flex pb-5 xs12 md12>
         <h4 class="display-1 section-header">What I Use</h4>
       </v-flex>
+      <!--Redo Icon section for scalability-->
       <v-flex pb-5 xs12 md12>
         <div class="icon-wrapper">
           <i class="devicon-html5-plain-wordmark colored"></i>
@@ -68,21 +69,39 @@
       </v-flex>
     </v-layout>
     <!--Section 3-->
-    <v-layout wrap>
+    <v-layout pa-5 justify-center row wrap>
       <v-flex pb-5 xs12 md12>
         <h4 class="display-1 section-header">What I've Built</h4>
       </v-flex>
-      <v-flex xs12 md12>
-        <v-parallax
-          class="site-para"
-          :src="require('../../resources/ashanti.jpg')"
-        ></v-parallax>
-      </v-flex>
-      <v-flex xs12 md12>
-        <v-parallax
-          class="site-para"
-          :src="require('../../resources/paw.jpg')"
-        ></v-parallax>
+      <v-flex xs12 md5 v-for="(website, i) in websites" :key="i">
+        <v-card>
+          <v-parallax class="site-parallax" :src="website.image"></v-parallax>
+          <v-card-title primary-title>
+            <div>
+              <div class="headline">{{ website.name }}</div>
+              <!--<div class="text-xs-left">{{ website.about }}</div>-->
+            </div>
+          </v-card-title>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              class="subhead-btn"
+              color="#707070"
+              :href="website.url"
+              :target="website.target"
+              >Visit</v-btn
+            >
+            <v-btn
+              class="subhead-btn"
+              color="#707070"
+              :href="website.source"
+              :target="website.target"
+            >
+              <v-icon>fab fa-github</v-icon>
+              <span class="btn-text">Source</span>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
@@ -91,9 +110,28 @@
 <script>
 export default {
   name: "HomeContent",
-  data() {
-    return {};
-  }
+  data: () => ({
+    websites: [
+      {
+        name: "The Ashanti Foundation",
+        image: require("../../resources/ashanti.jpg"),
+        url: "https://cblackm4.github.io/Ashanti-Foundation/",
+        source: "https://github.com/cblackm4/Ashanti-Foundation",
+        target: "_blank",
+        about:
+          "The Ashanti Foundation website is dedicated to the memory of Ashanti Billie as well as being a portal for The Ashanti Foundation itself."
+      },
+      {
+        name: "Pawkages",
+        image: require("../../resources/paw.jpg"),
+        url: "https://pawkages.herokuapp.com/accounts/login/",
+        source: "https://github.com/cblackm4/ecommerceproject",
+        target: "_blank",
+        about:
+          "Pawkages is a fictional e-commerce animal food mart created with Vue.js."
+      }
+    ]
+  })
 };
 </script>
 <style scoped lang="sass">
@@ -104,15 +142,21 @@ export default {
     font-size: 8em
     padding: .105em
 
-.site-para
-    opacity: 0.6
+.site-parallax
+    opacity: 0.9
     transition: opacity .5s ease-out
     -moz-transition: opacity .5s ease-out
     -webkit-transition: opacity .5s ease-out
     -o-transition: opacity .5s ease-out
 
-.site-para:hover
+.site-parallax:hover
     opacity: 1
+
+.subhead-btn
+    color: white
+
+.btn-text
+    padding-left: .5em
 
 @media only screen and (min-width: 960px)
     .devicon-html5-plain-wordmark, .devicon-css3-plain-wordmark, .devicon-javascript-plain, .devicon-vuejs-plain-wordmark, .devicon-sass-original, .devicon-github-plain-wordmark
