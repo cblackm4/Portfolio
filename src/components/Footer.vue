@@ -1,19 +1,20 @@
 <template>
   <v-footer class="foot-main" height="250" color="#707070">
-    <v-layout justify-center wrap>
+    <v-layout xs12 justify-center wrap>
       <v-flex
         v-for="(info, i) in infos"
         :key="i"
-        py-3
+        pa-3
         text-xs-center
         white--text
-        xs4
+        xs12
+        sm12
         md2
         >{{ info }}</v-flex
       >
-      <v-flex xs12 md12 text-xs-center>
+      <v-flex xs12 sm12 md12 text-xs-center>
         <v-btn
-          class="mx-3 foot-links"
+          class="mx-1 foot-links"
           v-for="(social, i) in socials"
           :key="i"
           fab
