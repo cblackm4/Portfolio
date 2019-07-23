@@ -1,15 +1,15 @@
 <template>
   <v-container id="scrollTar" grid-list-md text-xs-center fluid>
     <!--Section 1-->
-    <v-layout pb-5 justify-center row wrap>
+    <v-layout pt-5 pb-5 justify-center row wrap>
       <v-flex xs12 align-self-center>
         <h4 class="display-1 section-header">What I'm About</h4>
       </v-flex>
       <v-flex xs12 md3 v-for="(card, i) in cards" :key="i">
         <v-card flat>
-          <v-card-title class="justify-center headline section-header">{{
-            card.title
-          }}</v-card-title>
+          <v-card-title class="justify-center headline section-header">
+            {{ card.title }}
+          </v-card-title>
           <v-icon size="75">{{ card.icon }}</v-icon>
           <v-card-text class="text-xs-left">{{ card.text }}</v-card-text>
         </v-card>
@@ -17,13 +17,22 @@
     </v-layout>
     <!--Section 2-->
     <v-layout pb-5 justify-center row wrap>
-      <v-flex align-self-center xs12>
+      <v-flex row wrap align-self-center xs12>
         <h4 class="display-1 section-header">What I Use</h4>
       </v-flex>
-      <v-flex xs12 md3>
-        <v-icon v-for="(devicon, i) in devicons.slice(0, 3)" :key="i">{{
-          devicon
-        }}</v-icon>
+      <!--eslint throws error but this code is valid src: https://github.com/vuejs/vetur/issues/261-->
+      <v-flex
+        xs12
+        md12
+        v-bind:key="devicon"
+        v-for="(devicon, i) in Math.ceil(devicons.length / 3)"
+      >
+        <!--eslint throws error but this code is valid src: https://github.com/vuejs/vetur/issues/261-->
+        <v-icon
+          v-bind:key="devicon"
+          v-for="devicon in devicons.slice(i * 3, (i + 1) * 3)"
+          >{{ devicon }}</v-icon
+        >
       </v-flex>
     </v-layout>
     <!--Section 3-->
@@ -32,12 +41,12 @@
         <h4 class="display-1 section-header">What I've Built</h4>
       </v-flex>
       <v-flex xs12 sm12 md5 v-for="(website, i) in websites" :key="i">
-        <v-card>
+        <v-card height="100%">
           <v-parallax class="site-parallax" :src="website.image"></v-parallax>
           <v-card-title primary-title>
             <div>
               <div class="headline">{{ website.name }}</div>
-              <!--<div class="text-xs-left">{{ website.about }}</div>-->
+              <div class="text-xs-left">{{ website.about }}</div>
             </div>
           </v-card-title>
           <v-card-actions>
@@ -97,7 +106,7 @@ export default {
         source: "https://github.com/cblackm4/Ashanti-Foundation",
         target: "_blank",
         about:
-          "The Ashanti Foundation website is dedicated to the memory of Ashanti Billie as well as being a portal for The Ashanti Foundation itself."
+          "The Ashanti Foundation website is dedicated to the memory of Ashanti Billie as well as being a portal for The Ashanti Foundation itself. The foundation works in the community to help families and individuals in the event of adult abductions."
       },
       {
         name: "Pawkages",
@@ -106,7 +115,7 @@ export default {
         source: "https://github.com/cblackm4/ecommerceproject",
         target: "_blank",
         about:
-          "Pawkages is a fictional e-commerce animal food mart created with Vue.js."
+          "Pawkages is a fictional e-commerce animal food mart created with Vue.js built to display my skills in building app features. My work was focused on the design of the website and the subscriptions feature while also providing support to my teammates in other areas throughout development."
       }
     ],
     devicons: [
@@ -121,15 +130,12 @@ export default {
 };
 </script>
 <style scoped lang="sass">
-.section-header
-    color: #707070
 
 .devicon-html5-plain-wordmark, .devicon-css3-plain-wordmark, .devicon-javascript-plain, .devicon-vuejs-plain-wordmark, .devicon-sass-original, .devicon-github-plain-wordmark
     font-size: 8em
-    padding: .1em
+    padding: .3em
 
 .site-parallax
-    back
     opacity: 0.9
     transition: opacity .5s ease-out
     -moz-transition: opacity .5s ease-out

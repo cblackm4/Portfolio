@@ -34,7 +34,7 @@
           flat
           v-for="navlink in navlinks"
           :key="navlink.title"
-          :to="navlink.route"
+          v-on:click="navHelper(navlink.target)"
           >{{ navlink.title }}</v-btn
         >
       </v-toolbar-items>
@@ -49,24 +49,38 @@
 </template>
 
 <script>
+$(function() {
+  $(document).scroll(function() {
+    var $nav = $(".head-main");
+    $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+  });
+});
+
 export default {
   name: "Navigation",
   data() {
     return {
       hamburger: false,
       navlinks: [
-        { title: "Home", route: "/" },
-        { title: "About", route: "../about" },
-        { title: "Contact", route: "../contact" },
-        { title: "Services", route: "../services" }
+        { title: "Home", target: "top" },
+        { title: "About", target: "about-section" },
+        { title: "Contact", target: "contact-section" }
       ]
     };
+  },
+  methods: {
+    navHelper: function(target) {
+      document.getElementById(target).scrollIntoView({ behavior: "smooth" });
+    }
   }
 };
 </script>
 
 <style scoped lang="sass">
 .head-main
+    background-color: transparent
+    color: white
+.head-main.scrolled
     background-color: #707070
     color: #D1D1D1
 .head-links

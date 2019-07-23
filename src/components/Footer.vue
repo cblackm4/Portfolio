@@ -4,7 +4,6 @@
       <v-flex
         v-for="(info, i) in infos"
         :key="i"
-        pa-3
         text-xs-center
         white--text
         xs12
@@ -24,7 +23,7 @@
           :target="social.target"
         >
           <a>
-            <v-icon size="24px">{{ social.icon }}</v-icon>
+            <v-icon :color="social.color" size="24px">{{ social.icon }}</v-icon>
           </a>
         </v-btn>
       </v-flex>
@@ -41,24 +40,33 @@ export default {
   name: "Footer",
   data: () => ({
     socials: [
-      { icon: "fab fa-facebook", url: "http://facebook.com", target: "_blank" },
+      {
+        icon: "fab fa-facebook",
+        color: "#3b5998",
+        url: "http://facebook.com",
+        target: "_blank"
+      },
       {
         icon: "fab fa-twitter",
+        color: "#55acee",
         url: "https://twitter.com/blackmonc21",
         target: "_blank"
       },
       {
         icon: "fab fa-github",
+        color: "#333",
         url: "https://github.com/cblackm4",
         target: "_blank"
       },
       {
         icon: "fab fa-linkedin",
+        color: "#0077B5",
         url: "https://www.linkedin.com/in/christopherjblackmon/",
         target: "_blank"
       },
       {
         icon: "fab fa-stack-overflow",
+        color: "#fe7a15",
         url:
           "https://stackoverflow.com/users/5009042/chris-blackmon?tab=profile",
         target: "_blank"
@@ -73,8 +81,6 @@ export default {
 .foot-main
     background-color: #707070
     color: white
-.foot-links a
-    color: #707070
 .foot-links:hover a
-    color: black
+    opacity: 0.8
 </style>

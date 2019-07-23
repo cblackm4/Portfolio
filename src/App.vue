@@ -35,4 +35,17 @@ export default {
 };
 </script>
 
-<style lang="sass"></style>
+<style lang="sass">
+.section-header
+    color: #707070
+.content-header
+    position: absolute
+    color: white
+    top: 50%
+    left: 0
+    right: 0
+    transform: translate(0, -50%)
+    text-align: center
+.theme--light.application
+  background-color: #fff
+</style>
