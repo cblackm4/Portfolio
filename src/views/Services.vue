@@ -1,15 +1,15 @@
 <template>
   <span>
-    <about-content />
+    <services-content />
   </span>
 </template>
 
 <script>
-import AboutContent from "@/components/AboutContent";
+import ServicesContent from "@/components/ServicesContent";
 
 export default {
   components: {
-    AboutContent
+    ServicesContent
   }
 };
 </script>

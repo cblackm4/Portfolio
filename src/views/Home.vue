@@ -1,17 +1,32 @@
 <template>
-  <v-container fluid fill-height class="home-hero"></v-container>
+  <span id="top">
+    <hero-image />
+    <home-content />
+    <about-content />
+    <contact-content />
+  </span>
 </template>
 
 <script>
-export default {};
+import HeroImage from "@/components/HeroImage";
+import HomeContent from "@/components/HomeContent";
+import AboutContent from "@/components/AboutContent";
+import ContactContent from "@/components/ContactContent";
+export default {
+  components: {
+    HeroImage,
+    HomeContent,
+    AboutContent,
+    ContactContent
+  }
+};
 </script>
 
-<style scoped lang="sass">
-.home-hero
-    background-image: url("../../resources/hero-image.jpg")
-    height: 100vh
-    background-attachment: fixed
-    background-position: center
-    background-repeat: no-repeat
-    background-size: cover
+<style lang="sass">
+.alt-section
+  background-color: #707070
+  color: #D1D1D1
+
+.alt-section-header
+  color: white
 </style>
